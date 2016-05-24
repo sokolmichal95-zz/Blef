@@ -5,40 +5,48 @@ package Utilities;
  */
 public class Card {
 
-    public enum Value {
-        TWO("2"),
-        THREE("3"),
-        FOUR("4"),
-        FIVE("5"),
-        SIX("6"),
-        SEVEN("7"),
-        EIGHT("8"),
-        NINE("9"),
-        TEN("10"),
-        JACK("J"),
-        DAME("D"),
-        KING("K"),
-        AS("A");
+	public enum Value {
+		TWO("2"), THREE("3"), FOUR("4"), FIVE("5"), 
+		SIX("6"), SEVEN("7"), EIGHT("8"), NINE("9"), 
+		TEN("10"), JACK("W"), QUEEN("D"), KING("K"), 
+		ACE("A");
 
-        private String cardValue;
+		private String cardValue;
 
-        private Value(String cardValue) {
-            this.cardValue = cardValue;
-        }
-        public String getCardValue(){
-            return this.cardValue;
-        }
-    }
+		private Value(String cardValue) {
+			this.cardValue = cardValue;
+		}
 
-    private String color;
-    private String value;
+		public String getCardValue() {
+			return this.cardValue;
+		}
+	}
 
-    public Card(String color, String value) {
-        this.color = color;
-        this.value = value;
-    }
+	public enum Color {
+		HEARTS("H"), DIAMONDS("D"), SPADES("S"), CLUBS("C");
 
-    public String getCard(){
-        return value.concat(color);
-    }
+		private String color;
+
+		private Color(String color) {
+			this.color = color;
+		}
+
+		public String getColor() {
+			return this.color;
+		}
+	}
+
+	private Color color;
+	private Value value;
+
+	public Card(Color color, Value value) {
+		this.color = color;
+		this.value = value;
+	}
+
+	public String toString() {
+		String value = this.value.cardValue;
+		String color = this.color.color;
+		return value.concat(color);
+	}
 }
